@@ -1,5 +1,5 @@
 # General Information
-This is a Korean Language Sentence Constructor (KLSC). 
+This is a conversational Korean Language Sentence Constructor (KLSC). 
 
 The optimal person for the KLSC would be a beginner level individual (student) who is can read Korean, but still doesn't have enough vocabulary or understanding of tenses and particles to form a complete sentence.
 
@@ -7,25 +7,38 @@ The expected utilization would be for KLSC to assist a student to learn Korean d
 
 This document will attempt to document the findings from the sentence constructor testing of 4 GenAI models (ChatGPT, Gemini, Claude, and Gemini).
 
-# Prompt
-## General Information
-Role: Korean Language Instructor <br>
-Level: Beginner <br>
-Formality level: Neutral, polite casual <br>
+## Agent Flow
+The following agent has the following states:
+- Setup
+- Input
+- Output
 
-## Teaching Instructions
-1. The student is going to provide a sentence in English <br>
-2. You need to help student transcribe the sentence into a formal Korean <br>
+### Input State
+During the question state, the agent expects text input
 
-## Output Requirements
-1. Provide a table of vocabulary <br>
-2. Provide words in the dictionary form and their romanized version <br>
-3. Provide a sentence breakdown <br>
+### Output State
+During the output state, the agent will generate and respond with:
+- Translated sentence
+- Vocabulary
+- Sentence breakdown
+- Additional vocabular fitting the setting
 
-## Test Sentences
-- Sentence #1: Are you hungry? What would you like to eat for dinner?
-- Sentence #2: The fridge is empty. Let's go to the grocery store.
+# AI Models Specifications
+## Chat GPT
+- Model: GPT-4
+- Number of params: 175B
+## Meta AI
+- Model: Meta Llama 3.1
+- Number of params: 70B
 
-
-# GenAI Models
+# Observations
 ## ChatGPT
+The model performed as expected. It generated output as described in the prompt. I had to explicitly ask the model to not include polite suffix or particles as it was relatively obvious even for a beginner. The added explanation of other particles helped to better understand the structure of the sentence.
+
+
+## Meta AI
+The model performed poorly. The generated out was inconsistent, had poor choice of words for a conversational Korean. In addition, through one of the refinement attempts the model provided 1 vocabulary word in Russian.
+
+## Summary
+ChatGPT had a more complete response with a much better conversational Korean choice of words.
+Meta AI can be improved further with additional prompt guidelines.
